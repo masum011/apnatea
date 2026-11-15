@@ -1,20 +1,75 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# ☕ Apna Tea
 
-# Run and deploy your AI Studio app
+**Har Cup Mein Apnapan.**
 
-This contains everything you need to run your app locally.
+Apna Tea is a premium Indian chai and beverage outlet website where customers can explore our menu, discover our outlet and place orders directly through WhatsApp.
 
-View your app in AI Studio: https://ai.studio/apps/2e780a15-d15b-447e-921d-e0aa95af852c
+## ✨ Features
 
-## Run Locally
+- Premium, responsive UI/UX.
+- Tea, coffee, soft drinks and energy drinks menu.
+- Snacks and food catalogue.
+- Online shopping cart and checkout.
+- WhatsApp order integration.
+- Outlet gallery and Google Maps.
+- Franchise enquiry section.
+- Premium animations.
+- SEO and performance optimization.
 
-**Prerequisites:**  Node.js
+## 🛠️ Tech Stack
 
+- React.js + Vite
+- JavaScript (ES6+)
+- Tailwind CSS
+- Framer Motion
+- GSAP + ScrollTrigger
+- Lucide React
+- Google Maps API
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+**Note:** JavaScript only. No TypeScript or TSX.
+
+## 🚀 Installation
+
+```bash
+git clone https://github.com/masum011/apnatea.git
+cd apnatea
+npm install
+```
+
+Create a `.env` file:
+
+```env
+VITE_GOOGLE_MAPS_API_KEY=your_api_key_here
+```
+
+Start development:
+
+```bash
+npm run dev
+```
+
+Build for production:
+
+```bash
+npm run build
+```
+
+## 🎨 Brand Colors
+
+| Color | Hex |
+|---|---|
+| Espresso Brown | `#321B13` |
+| Warm Cream | `#F6EBDD` |
+| Chai Gold | `#C88B36` |
+| Brand Red | `#A83224` |
+
+## 🌐 Deployment
+
+Designed for deployment on Netlify.
+
+- Build command: `npm run build`
+- Publish directory: `dist`
+
+---
+
+**Made with ❤️ and ☕ for Apna Tea.**
