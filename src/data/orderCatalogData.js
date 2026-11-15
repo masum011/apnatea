@@ -94,7 +94,7 @@ export const ORDER_PRODUCTS = [
     categoryLabel: 'Tea & Coffee',
     description:
       'Velvety cocoa-blended milk tea topped with dark chocolate shavings and warm cinnamon.',
-    price: 30,
+    price: 20,
     unit: 'Per Glass',
     available: true,
     restricted: false,
@@ -361,7 +361,7 @@ export const ORDER_PRODUCTS = [
     category: 'energy-drinks',
     categoryLabel: 'Energy Drinks',
     description: 'Monster Energy drink, served chilled.',
-    price: 60,
+    price: 125,
     unit: '473 ml Can',
     available: true,
     restricted: false,
