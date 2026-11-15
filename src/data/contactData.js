@@ -18,7 +18,7 @@ export const OUTLET_CONFIG = {
   openingHours: '',
   openingHoursFallback: 'Open Daily · Morning to Late Evening',
   phoneNumber: '',
-  whatsappNumber: '',
+  whatsappNumber: '918016634973',
   email: '',
   googleMapsUrl:
     'https://www.google.com/maps/search/?api=1&query=Ashapur+Road+Ramdebpur+Malda+Division+West+Bengal',

@@ -10,7 +10,7 @@ export const ORDER_CONFIG = {
 
   // Enter your 10-digit mobile number with country code (e.g., '919876543210')
   // Leave blank to let WhatsApp prompt contact selection on send.
-  ownerWhatsAppNumber: '',
+  ownerWhatsAppNumber: '918016634973',
 
   acceptingOrders: true,
 

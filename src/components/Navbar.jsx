@@ -5,9 +5,9 @@ import ApnaTeaLogo from './ApnaTeaLogo';
 import Button from './Button';
 
 const NAV_LINKS = [
-  { id: 'home', label: 'Home', href: '#home', page: 'home' },
+  { id: 'home', label: 'Home', href: '/home', page: 'home' },
   { id: 'menu', label: 'Menu', href: '#menu', page: 'home' },
-  { id: 'order', label: 'Order Online', href: '#/order', page: 'order' },
+  { id: 'order', label: 'Order Online', href: '/order', page: 'order' },
   { id: 'outlet', label: 'Our Outlet', href: '#outlet', page: 'home' },
   { id: 'franchise', label: 'Franchise', href: '#franchise', page: 'home' },
   { id: 'contact', label: 'Contact', href: '#contact', page: 'home' },
@@ -79,7 +79,7 @@ export default function Navbar({
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 md:h-20 flex items-center justify-between gap-6">
         <a
-          href="#home"
+          href="/home"
           onClick={(e) => handleNavClick(e, NAV_LINKS[0])}
           className="focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#E59F29] rounded-md"
           aria-label="Apna Tea Home"
@@ -113,7 +113,7 @@ export default function Navbar({
           })}
         </nav>
 
-        <div className="flex items-center gap-3 shrink-0">
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
           {activePage === 'order' ? (
             <Button
               variant="primary"
@@ -125,15 +125,30 @@ export default function Navbar({
               <span className="tabular-nums">Cart ({cartCount})</span>
             </Button>
           ) : (
-            <Button
-              variant="primary"
-              size="sm"
-              onClick={() => onOpenEnquiry('franchise')}
-              className="hidden sm:inline-flex"
-            >
-              <Store className="w-4 h-4" aria-hidden="true" />
-              <span>Enquire Franchise</span>
-            </Button>
+            <>
+              <div className="lg:hidden">
+                <Button
+                  variant="primary"
+                  size="sm"
+                  onClick={() => onNavigate('order')}
+                  ariaLabel="Order Online"
+                >
+                  <ShoppingBag className="w-4 h-4" aria-hidden="true" />
+                  <span className="hidden sm:inline">Order Online</span>
+                  <span className="sm:hidden">Order</span>
+                </Button>
+              </div>
+              <div className="hidden lg:block">
+                <Button
+                  variant="primary"
+                  size="sm"
+                  onClick={() => onOpenEnquiry('franchise')}
+                >
+                  <Store className="w-4 h-4" aria-hidden="true" />
+                  <span>Enquire Franchise</span>
+                </Button>
+              </div>
+            </>
           )}
 
           <button

@@ -1,5 +1,6 @@
 import { Suspense, lazy, useCallback, useEffect, useMemo, useState } from 'react';
 import { MotionConfig } from 'framer-motion';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import { OrderPageSkeleton, SectionSkeleton } from './components/Skeletons';
@@ -32,12 +33,10 @@ function loadInitialCart() {
   }
 }
 
-function getPageFromHash() {
-  return window.location.hash === '#/order' ? 'order' : 'home';
-}
-
 export default function App() {
-  const [activePage, setActivePage] = useState(getPageFromHash);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const activePage = location.pathname === '/order' ? 'order' : 'home';
   const [cartItems, setCartItems] = useState(loadInitialCart);
   const [cartDrawerOpen, setCartDrawerOpen] = useState(false);
   const [enquiryModal, setEnquiryModal] = useState({ open: false, type: 'franchise' });
@@ -52,12 +51,18 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    const handleHashChange = () => {
-      setActivePage(getPageFromHash());
-    };
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
-  }, []);
+    if (location.pathname !== '/') return;
+
+    const destination =
+      location.hash === '#/order'
+        ? '/order'
+        : `/home${
+            location.hash && location.hash !== '#home' && !location.hash.startsWith('#/')
+              ? location.hash
+              : ''
+          }`;
+    navigate(destination, { replace: true });
+  }, [location.hash, location.pathname, navigate]);
 
   useEffect(() => {
     try {
@@ -69,16 +74,18 @@ export default function App() {
 
   const navigateTo = useCallback((page, sectionId) => {
     if (page === 'order') {
-      window.location.hash = '#/order';
-      setActivePage('order');
+      navigate('/order');
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
 
-    if (window.location.hash === '#/order') {
-      window.location.hash = sectionId ? `#${sectionId}` : '#home';
+    if (sectionId === 'home') {
+      if (location.pathname !== '/home' || location.hash) {
+        navigate('/home');
+      }
+    } else if (location.pathname !== '/home') {
+      navigate(sectionId ? `/home#${sectionId}` : '/home');
     }
-    setActivePage('home');
 
     if (sectionId) {
       window.setTimeout(() => {
@@ -92,7 +99,7 @@ export default function App() {
     } else {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-  }, []);
+  }, [location.hash, location.pathname, navigate]);
 
   const handleAddToCart = useCallback((product) => {
     if (!product.available) return;

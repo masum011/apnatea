@@ -33,7 +33,7 @@ export function useSeoMetadata(activePage) {
 
     const origin = window.location.origin;
     const canonicalHref =
-      activePage === 'order' ? `${origin}/#/order` : `${origin}/`;
+      activePage === 'order' ? `${origin}/order` : `${origin}/home`;
 
     let canonicalEl = document.querySelector('link[rel="canonical"]');
     if (!canonicalEl) {

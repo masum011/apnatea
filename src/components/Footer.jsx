@@ -4,9 +4,9 @@ import { OUTLET_CONFIG } from '../data/contactData';
 import { buildWhatsAppUrl } from '../utils/contactActions';
 
 const FOOTER_NAV = [
-  { id: 'home', label: 'Home', href: '#home', page: 'home' },
+  { id: 'home', label: 'Home', href: '/home', page: 'home' },
   { id: 'menu', label: 'Menu', href: '#menu', page: 'home' },
-  { id: 'order', label: 'Order Online', href: '#/order', page: 'order' },
+  { id: 'order', label: 'Order Online', href: '/order', page: 'order' },
   { id: 'outlet', label: 'Our Outlet', href: '#outlet', page: 'home' },
   { id: 'franchise', label: 'Franchise', href: '#franchise', page: 'home' },
   { id: 'contact', label: 'Contact', href: '#contact', page: 'home' },
@@ -32,7 +32,7 @@ export default function Footer({ onNavigate }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col lg:flex-row items-center justify-between gap-6">
         <div className="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
           <a
-            href="#home"
+            href="/home"
             onClick={(e) => handleScroll(e, FOOTER_NAV[0])}
             aria-label="Back to top"
           >

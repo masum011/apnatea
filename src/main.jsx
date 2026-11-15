@@ -1,5 +1,6 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
+import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
 import App from './App.jsx';
 import './index.css';
 
@@ -16,8 +17,21 @@ console.error = (...args) => {
   }
 };
 
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <App />,
+    children: [
+      { index: true, element: null },
+      { path: 'home', element: null },
+      { path: 'order', element: null },
+    ],
+  },
+  { path: '*', element: <Navigate to="/home" replace /> },
+]);
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </StrictMode>
 );
