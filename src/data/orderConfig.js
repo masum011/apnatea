@@ -13,7 +13,7 @@ export const ORDER_CONFIG = {
   ownerWhatsAppNumber: '918016634973',
 
   acceptingOrders: true,
-  minimumOrderAmount: 99,
+  minimumOrderAmount: 50,
 
   pickup: {
     enabled: true,
@@ -24,8 +24,8 @@ export const ORDER_CONFIG = {
   delivery: {
     enabled: true,
     label: 'Local Delivery',
-    fee: 20,
-    freeDeliveryAbove: 199,
+    fee: 15,
+    freeDeliveryAbove: 99,
     areaNote: 'Local delivery around Ashapur Road & Chanchal',
   },
 
