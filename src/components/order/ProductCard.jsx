@@ -7,7 +7,15 @@ import { formatCurrency } from '../../utils/orderUtils';
 
 function ProductCard({ product, quantityInCart, onAdd, onUpdateQty }) {
   const isRestrictedNoImage = !product.image && !product.webpSrc;
-  const imageSource = product.webpSrc || product.image;
+  const webpSrc =
+    product.webpSrc ||
+    (product.image ? product.image.replace(/\.(?:jpe?g|png)$/i, '.webp') : undefined);
+  const webpSrcSet =
+    product.webpSrcSet ||
+    (webpSrc && product.width > 480
+      ? `${webpSrc.replace(/\.webp$/i, '-480w.webp')} 480w, ${webpSrc} ${product.width}w`
+      : undefined);
+  const imageSource = webpSrc || product.image;
   const [loadedImage, setLoadedImage] = useState('');
   const imageReady = !imageSource || loadedImage === imageSource;
 
@@ -36,8 +44,8 @@ function ProductCard({ product, quantityInCart, onAdd, onUpdateQty }) {
           {!isRestrictedNoImage ? (
             <OptimizedImage
               src={product.image}
-              webpSrc={product.webpSrc}
-              webpSrcSet={product.webpSrcSet}
+              webpSrc={webpSrc}
+              webpSrcSet={webpSrcSet}
               sizes="(max-width: 640px) 92vw, (max-width: 1024px) 46vw, 29vw"
               width={product.width || 800}
               height={product.height || 600}

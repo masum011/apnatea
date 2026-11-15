@@ -180,6 +180,8 @@ export default function Gallery() {
                 <OptimizedImage
                   src={activeItem.src}
                   webpSrc={activeItem.webpSrc}
+                  webpSrcSet={activeItem.webpSrcSet}
+                  sizes="(max-width: 928px) calc(100vw - 32px), 896px"
                   width={activeItem.width}
                   height={activeItem.height}
                   priority={true}

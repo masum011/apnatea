@@ -240,6 +240,8 @@ export default function Menu({ onEnquireClick }) {
                 <OptimizedImage
                   src={selectedTea.image}
                   webpSrc={selectedTea.webpSrc}
+                  webpSrcSet={selectedTea.webpSrcSet}
+                  sizes="(max-width: 480px) calc(100vw - 32px), 448px"
                   width={selectedTea.width}
                   height={selectedTea.height}
                   alt={selectedTea.alt}
