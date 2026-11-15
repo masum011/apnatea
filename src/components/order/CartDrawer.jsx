@@ -363,15 +363,6 @@ export default function CartDrawer({
                           </>
                         )}
                       </Button>
-
-                      <Button
-                        variant="espresso"
-                        size="sm"
-                        onClick={handleStartNew}
-                        className="w-full"
-                      >
-                        <span>Done</span>
-                      </Button>
                     </div>
                   </div>
                 </div>
