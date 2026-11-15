@@ -60,6 +60,12 @@ export default function Hero() {
       id="home"
       ref={heroRef}
       className="relative overflow-hidden bg-[#22110B] pt-24 pb-16 sm:pt-28 sm:pb-20 lg:pt-32 lg:pb-24"
+      style={{
+        backgroundImage:
+          "linear-gradient(rgba(34, 17, 11, 0.76), rgba(34, 17, 11, 0.76)), url('/images/apna-tea-outlet.webp')",
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
+      }}
     >
       {/* Atmospheric warm spice radial backdrop */}
       <div
