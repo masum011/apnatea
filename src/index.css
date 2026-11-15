@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+@theme {
+  --color-espresso: #321B13;
+  --color-espresso-deep: #22110B;
+  --color-cream: #F6EBDD;
+  --color-cream-light: #FBF5EC;
+  --color-chai-gold: #C88B36;
+  --color-chai-amber: #E59F29;
+  --color-brand-red: #A83224;
+  --color-tea-brown: #6B3D25;
+  --color-off-white: #FFFDF8;
+
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    background-color: var(--color-cream);
+    color: var(--color-espresso);
+    scroll-behavior: smooth;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+}
+
+@keyframes apna-shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.skeleton-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.skeleton-shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 253, 248, 0.55) 50%,
+    transparent 100%
+  );
+  animation: apna-shimmer 1.35s infinite ease-in-out;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .skeleton-shimmer::after {
+    animation: none;
+  }
+}

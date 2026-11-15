@@ -1,0 +1,128 @@
+export const MENU_CATEGORIES = [
+  { id: 'all', label: 'All Specials' },
+  { id: 'hot-chai', label: 'Traditional Chai' },
+  { id: 'signature', label: 'Signature Brews' },
+  { id: 'refreshing', label: 'Light & Refreshing' },
+];
+
+export const FEATURED_MENU = [
+  {
+    id: 'lemon-tea',
+    name: 'Lemon Tea',
+    category: 'refreshing',
+    image: '/images/lemon-tea.jpeg',
+    webpSrc: '/images/lemon-tea.webp',
+    webpSrcSet: '/images/lemon-tea-480w.webp 480w, /images/lemon-tea.webp 680w',
+    width: 680,
+    height: 1018,
+    alt: 'Freshly brewed Lemon Tea in glass cups with sliced lemons and crispy namakpara snacks at Apna Tea',
+    subtitle: 'Zesty Citrus & Crisp Tea',
+    servingNote: 'Served Hot · Pairs with Namakpara',
+    description:
+      'Brisk tea leaves steeped with freshly squeezed lemon juice for a bright, palate-cleansing cup served alongside crunchy snacks.',
+    featured: true,
+  },
+  {
+    id: 'adrak-chai',
+    name: 'Adrak Chai',
+    category: 'hot-chai',
+    image: '/images/adrak-chai.jpeg',
+    webpSrc: '/images/adrak-chai.webp',
+    webpSrcSet: '/images/adrak-chai-480w.webp 480w, /images/adrak-chai.webp 960w',
+    width: 960,
+    height: 960,
+    alt: 'Traditional Adrak Chai served in a red terracotta-style cup with fresh ginger, green cardamom, and jaggery at Apna Tea',
+    subtitle: 'Crushed Ginger, Cardamom & Jaggery',
+    servingNote: 'Slow-Simmered · Kulhad Style',
+    description:
+      'Authentic Apna Amruttulya ginger chai simmered with fresh crushed adrak, aromatic elaichi pods, and rich traditional warmth.',
+    featured: true,
+  },
+  {
+    id: 'green-tea',
+    name: 'Green Tea',
+    category: 'refreshing',
+    image: '/images/green-tea.jpeg',
+    webpSrc: '/images/green-tea.webp',
+    webpSrcSet: '/images/green-tea-480w.webp 480w, /images/green-tea.webp 480w',
+    width: 480,
+    height: 640,
+    alt: 'Clear golden-green tea in a transparent glass cup and saucer garnished with fresh tea leaves',
+    subtitle: 'Pure Botanical Infusion',
+    servingNote: 'Zero Milk · Antioxidant Rich',
+    description:
+      'Whole-leaf green tea brewed gently in clear glass to preserve delicate floral notes and natural lightness in every sip.',
+    featured: true,
+  },
+  {
+    id: 'chocolate-tea',
+    name: 'Chocolate Tea',
+    category: 'signature',
+    image: '/images/chocolate-tea.jpeg',
+    webpSrc: '/images/chocolate-tea.webp',
+    webpSrcSet: '/images/chocolate-tea-480w.webp 480w, /images/chocolate-tea.webp 960w',
+    width: 960,
+    height: 960,
+    alt: 'Rich creamy Chocolate Tea in tall glasses topped with dark chocolate shavings, almonds, and cinnamon sticks',
+    subtitle: 'Cocoa, Cinnamon & Milk Blend',
+    servingNote: 'Signature Treat · Café Favorite',
+    description:
+      'A comforting fusion of rich cocoa, warm cinnamon spice, and creamy brewed tea finished with shaved chocolate.',
+    featured: true,
+  },
+  {
+    id: 'special-chai',
+    name: 'Special Chai',
+    category: 'signature',
+    image: '/images/special-chai.jpeg',
+    webpSrc: '/images/special-chai.webp',
+    webpSrcSet: '/images/special-chai-480w.webp 480w, /images/special-chai.webp 600w',
+    width: 600,
+    height: 900,
+    alt: 'Frothy Apna Tea Special Chai in a turquoise ceramic mug served with crisp golden biscuits',
+    subtitle: 'Frothy House-Special Blend',
+    servingNote: 'Signature Froth · Biscuit Pairing',
+    description:
+      'Our signature extra-frothy Apna Tea house recipe brewed to full-bodied perfection and enjoyed best with crisp biscuits.',
+    featured: true,
+  },
+];
+
+export const SNACKS_AND_BEVERAGES = [
+  {
+    id: 'masala-chai',
+    name: 'Apna Masala Chai',
+    type: 'Hot Beverage',
+    note: 'Whole Indian spices simmered in milk and Assam tea leaves.',
+  },
+  {
+    id: 'elaichi-chai',
+    name: 'Elaichi Amruttulya Chai',
+    type: 'Hot Beverage',
+    note: 'Fragrant green cardamom infusion following the classic Amruttulya method.',
+  },
+  {
+    id: 'bun-maska',
+    name: 'Fresh Bun Maska',
+    type: 'Tea-Time Snack',
+    note: 'Soft toasted bakery bun generously layered with whipped butter.',
+  },
+  {
+    id: 'namakpara-biscuits',
+    name: 'Namakpara & Crisp Biscuits',
+    type: 'Tea-Time Snack',
+    note: 'Crunchy savory diamond crisps and golden tea biscuits baked fresh.',
+  },
+  {
+    id: 'rusk-khari',
+    name: 'Golden Rusk & Khari Puff',
+    type: 'Tea-Time Snack',
+    note: 'Flaky puff pastry and crisp cardamom rusks made for dipping.',
+  },
+  {
+    id: 'iced-lemon-brew',
+    name: 'Chilled Lemon & Cooler Teas',
+    type: 'Refreshing Cooler',
+    note: 'Cool, citrus-forward tea refreshers crafted for warm Malda afternoons.',
+  },
+];
