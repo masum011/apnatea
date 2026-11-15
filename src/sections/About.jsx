@@ -96,7 +96,7 @@ export default function About() {
               accentTitle="Served with Warmth"
               align="left"
               showLines={false}
-              subtitle="At Apna Tea, an Apna Amruttulya franchise outlet in Ramdebpur, Malda Division, chai is more than a quick stop — it is a comforting daily ritual shared across generations."
+              subtitle="At Apna Tea, an Apna Amruttulya franchise outlet in Chanchal, Malda Division, chai is more than a quick stop — it is a comforting daily ritual shared across generations."
             />
 
             <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-5">

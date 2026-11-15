@@ -1,8 +1,8 @@
-export function ProductCardSkeleton() {
+export function ProductCardSkeleton({ className = '' }) {
   return (
     <div
       aria-hidden="true"
-      className="rounded-2xl bg-[#FFFDF8] border border-[#6B3D25]/12 shadow-sm overflow-hidden flex flex-col"
+      className={`rounded-2xl bg-[#FFFDF8] border border-[#6B3D25]/12 shadow-sm overflow-hidden flex flex-col ${className}`}
     >
       <div className="p-3 pb-0">
         <div className="aspect-[4/3] w-full rounded-xl bg-[#EADCCB] overflow-hidden relative">

@@ -20,6 +20,7 @@ export default function OptimizedImage({
   className = '',
   wrapperClassName = '',
   imgRef = null,
+  onReady,
 }) {
   const internalRef = useRef(null);
   const resolvedRef = imgRef || internalRef;
@@ -29,8 +30,9 @@ export default function OptimizedImage({
   useEffect(() => {
     if (resolvedRef.current && resolvedRef.current.complete && resolvedRef.current.naturalWidth > 0) {
       setLoaded(true);
+      onReady?.();
     }
-  }, [resolvedRef]);
+  }, [resolvedRef, onReady]);
 
   if (errored || (!src && !webpSrc)) {
     return (
@@ -72,8 +74,14 @@ export default function OptimizedImage({
           fetchPriority={priority ? 'high' : 'auto'}
           decoding={priority ? 'sync' : 'async'}
           referrerPolicy="no-referrer"
-          onLoad={() => setLoaded(true)}
-          onError={() => setErrored(true)}
+          onLoad={() => {
+            setLoaded(true);
+            onReady?.();
+          }}
+          onError={() => {
+            setErrored(true);
+            onReady?.();
+          }}
           className={`${className} transition-opacity duration-300 ${
             loaded || priority ? 'opacity-100' : 'opacity-0'
           }`}

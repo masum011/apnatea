@@ -4,12 +4,12 @@ export const OUTLET_CONFIG = {
   tagline: 'Har Cup Mein Apnapan',
   subTagline: 'Chai · Snacks · More',
   address: {
-    street: 'Ashapur Road, Ramdebpur',
+    street: 'Ashapur Road, Chanchal',
     region: 'Malda Division, West Bengal',
-    full: 'Ashapur Road, Ramdebpur, Malda Division, West Bengal',
+    full: 'Ashapur Road, Chanchal, Malda Division, West Bengal',
     shortLabel: 'Ashapur Road, Malda',
   },
-  // Coordinates centered on Malda Division / Ramdebpur corridor
+  // Coordinates centered on Malda Division / Chanchal corridor
   coordinates: {
     lat: 25.0108,
     lng: 88.1411,
@@ -21,7 +21,7 @@ export const OUTLET_CONFIG = {
   whatsappNumber: '918016634973',
   email: '',
   googleMapsUrl:
-    'https://www.google.com/maps/search/?api=1&query=Ashapur+Road+Ramdebpur+Malda+Division+West+Bengal',
+    'https://www.google.com/maps/search/?api=1&query=Ashapur+Road+Chanchal+Malda+Division+West+Bengal',
   socialLinks: [
     { id: 'whatsapp', label: 'WhatsApp', href: '#contact' },
     { id: 'instagram', label: 'Instagram', href: '#gallery' },

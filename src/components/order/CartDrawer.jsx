@@ -50,6 +50,7 @@ export default function CartDrawer({
   const [copied, setCopied] = useState(false);
 
   const totals = calculateOrderTotals(cartItems, form.orderType);
+  const minimumOrderMet = totals.subtotal >= ORDER_CONFIG.minimumOrderAmount;
 
   useEffect(() => {
     if (isOpen && step === 'confirmation' && cartItems.length > 0) {
@@ -88,6 +89,9 @@ export default function CartDrawer({
       (!form.deliveryAddress.trim() || form.deliveryAddress.trim().length < 6)
     ) {
       nextErrors.deliveryAddress = 'Please enter your complete delivery address.';
+    }
+    if (!minimumOrderMet) {
+      nextErrors.minimumOrderAmount = `Orders require a minimum subtotal of ${formatCurrency(ORDER_CONFIG.minimumOrderAmount)}.`;
     }
     if (totals.hasRestrictedItems && !form.ageConfirmed) {
       nextErrors.ageConfirmed = 'Please confirm 18+ age eligibility for restricted items.';
@@ -198,7 +202,7 @@ export default function CartDrawer({
                         : 'Order Ready for WhatsApp'}
                   </h2>
                   <p className="text-[11px] text-[#E59F29]">
-                    {ORDER_CONFIG.storeName} · Ashapur Road, Ramdebpur
+                    {ORDER_CONFIG.storeName} · Ashapur Road, Chanchal
                   </p>
                 </div>
               </div>
@@ -530,7 +534,7 @@ export default function CartDrawer({
                         rows={2}
                         value={form.deliveryAddress}
                         onChange={handleFieldChange('deliveryAddress')}
-                        placeholder="House/shop name, road, landmark near Ramdebpur / Ashapur Road..."
+                        placeholder="House/shop name, road, landmark near Chanchal / Ashapur Road..."
                         className={`w-full px-3.5 py-2.5 rounded-lg bg-[#FBF5EC] border text-sm text-[#321B13] focus:outline-none focus:ring-2 focus:ring-[#C88B36] ${
                           errors.deliveryAddress ? 'border-[#A83224]' : 'border-[#6B3D25]/20'
                         }`}
@@ -594,6 +598,13 @@ export default function CartDrawer({
             {/* Footer Totals & Action Bar */}
             {cartItems.length > 0 && step !== 'confirmation' && step !== 'processing' && (
               <div className="border-t border-[#6B3D25]/15 bg-[#FBF5EC] p-5 space-y-3 shrink-0">
+                {!minimumOrderMet && (
+                  <p className="text-xs font-semibold text-[#A83224]" role="status" aria-live="polite">
+                    Minimum order: {formatCurrency(ORDER_CONFIG.minimumOrderAmount)}. Add{' '}
+                    {formatCurrency(ORDER_CONFIG.minimumOrderAmount - totals.subtotal)} more to
+                    place your order.
+                  </p>
+                )}
                 <div className="space-y-1.5 text-sm tabular-nums">
                   <div className="flex justify-between text-[#6B3D25]">
                     <span>Subtotal</span>
@@ -624,6 +635,7 @@ export default function CartDrawer({
                     variant="primary"
                     size="lg"
                     onClick={() => setStep('checkout')}
+                    disabled={!minimumOrderMet}
                     className="w-full"
                   >
                     <span>Proceed to Checkout</span>
@@ -634,6 +646,7 @@ export default function CartDrawer({
                     form="order-checkout-form"
                     variant="whatsapp"
                     size="lg"
+                    disabled={!minimumOrderMet}
                     className="w-full"
                   >
                     <MessageCircle className="w-4 h-4" aria-hidden="true" />

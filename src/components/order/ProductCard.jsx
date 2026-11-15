@@ -1,11 +1,15 @@
-import { memo } from 'react';
+import { memo, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Check, Coffee, Minus, Plus, ShieldAlert, ShoppingBag } from 'lucide-react';
 import OptimizedImage from '../OptimizedImage';
+import { ProductCardSkeleton } from '../Skeletons';
 import { formatCurrency } from '../../utils/orderUtils';
 
 function ProductCard({ product, quantityInCart, onAdd, onUpdateQty }) {
   const isRestrictedNoImage = !product.image && !product.webpSrc;
+  const imageSource = product.webpSrc || product.image;
+  const [loadedImage, setLoadedImage] = useState('');
+  const imageReady = !imageSource || loadedImage === imageSource;
 
   return (
     <motion.article
@@ -15,10 +19,17 @@ function ProductCard({ product, quantityInCart, onAdd, onUpdateQty }) {
       exit={{ opacity: 0, scale: 0.98 }}
       whileHover={product.available ? { y: -3 } : undefined}
       transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-      className={`rounded-2xl bg-[#FFFDF8] border border-[#6B3D25]/15 shadow-[0_6px_20px_rgba(50,27,19,0.06)] overflow-hidden flex flex-col ${
+      aria-busy={!imageReady}
+      inert={!imageReady}
+      className={`relative rounded-2xl bg-[#FFFDF8] border border-[#6B3D25]/15 shadow-[0_6px_20px_rgba(50,27,19,0.06)] overflow-hidden flex flex-col ${
         !product.available ? 'opacity-80' : ''
       }`}
     >
+      {!imageReady && (
+        <div className="absolute inset-0 z-10">
+          <ProductCardSkeleton className="h-full" />
+        </div>
+      )}
       {/* 4:3 Image / Fallback Container */}
       <div className="p-3 pb-0">
         <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-[#321B13]">
@@ -31,6 +42,7 @@ function ProductCard({ product, quantityInCart, onAdd, onUpdateQty }) {
               width={product.width || 800}
               height={product.height || 600}
               alt={product.alt}
+              onReady={() => setLoadedImage(imageSource)}
               className={`w-full h-full object-cover transition-transform duration-500 ${
                 product.available ? 'hover:scale-105' : 'grayscale-[40%]'
               }`}

@@ -2,12 +2,12 @@ import { useEffect } from 'react';
 
 const SEO_BY_PAGE = {
   home: {
-    title: 'Apna Tea | Har Cup Mein Apnapan – Chai & Snacks in Ramdebpur, Malda',
+    title: 'Apna Tea | Har Cup Mein Apnapan – Chai & Snacks in Chanchal, Malda',
     description:
-      'Visit Apna Tea (Apna Amruttulya) on Ashapur Road, Ramdebpur, Malda Division for freshly brewed chai, snacks, cold drinks, and franchise enquiries.',
+      'Visit Apna Tea (Apna Amruttulya) on Ashapur Road, Chanchal, Malda Division for freshly brewed chai, snacks, cold drinks, and franchise enquiries.',
   },
   order: {
-    title: 'Order Online | Apna Tea – Chai, Drinks & Snacks in Ramdebpur, Malda',
+    title: 'Order Online | Apna Tea – Chai, Drinks & Snacks in Chanchal, Malda',
     description:
       'Order fresh Adrak Chai, Special Chai, Lemon Tea, Green Tea, soft drinks, energy drinks, and crispy snacks online for pickup or delivery via WhatsApp.',
   },

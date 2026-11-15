@@ -13,8 +13,8 @@ const GALLERY_ITEMS = [
     webpSrcSet: '/images/apna-tea-outlet-480w.webp 480w, /images/apna-tea-outlet.webp 1200w',
     width: 1200,
     height: 900,
-    alt: 'Apna Amruttulya outlet at Ashapur Road, Ramdebpur, Malda Division during evening service',
-    caption: 'Apna Amruttulya Outlet · Ashapur Road, Ramdebpur',
+    alt: 'Apna Amruttulya outlet at Ashapur Road, Chanchal, Malda Division during evening service',
+    caption: 'Apna Amruttulya Outlet · Ashapur Road, Chanchal',
     span: 'md:col-span-2 md:row-span-2',
   },
   {
@@ -114,7 +114,7 @@ export default function Gallery() {
           eyebrow="OUTLET GALLERY"
           title="Inside"
           accentTitle="Apna Tea"
-          subtitle="Real moments from our Ramdebpur outlet and the freshly brewed cups we serve every day."
+          subtitle="Real moments from our Chanchal outlet and the freshly brewed cups we serve every day."
           align="center"
         />
 

@@ -44,7 +44,7 @@ export default function Outlet() {
                 sizes="(max-width: 1024px) 100vw, 56vw"
                 width={1200}
                 height={900}
-                alt="Real photograph of Apna Amruttulya Apna Tea outlet at Ashapur Road, Ramdebpur, Malda Division, West Bengal with evening lights and outdoor seating"
+                alt="Real photograph of Apna Amruttulya Apna Tea outlet at Ashapur Road, Chanchal, Malda Division, West Bengal with evening lights and outdoor seating"
                 className="w-full h-full object-cover"
               />
               <div
@@ -65,7 +65,7 @@ export default function Outlet() {
             <SectionHeading
               eyebrow="OUR OUTLET"
               title="Visit Apna Amruttulya"
-              accentTitle="in Ramdebpur"
+              accentTitle="in Chanchal"
               align="left"
               showLines={false}
               subtitle="Located along Ashapur Road in Malda Division, our welcoming open-air tea kiosk brings together authentic Amruttulya chai craftsmanship, glowing evening ambience, and relaxed table seating."

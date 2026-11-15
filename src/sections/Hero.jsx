@@ -105,8 +105,8 @@ export default function Hero() {
               className="mt-5 text-base sm:text-lg text-[#F6EBDD]/85 leading-relaxed max-w-lg"
             >
               Freshly brewed chai, refreshing beverages and delicious snacks at your nearby{' '}
-              <span className="text-[#E59F29] font-semibold">Apna Tea</span> outlet — an
-              authentic Apna Amruttulya experience in Malda Division.
+              <span className="text-[#E59F29] font-semibold">Apna Tea</span> outlet by <span className="text-[#E59F29] font-semibold">Mamun</span> — an
+              authentic Apna Amruttulya experience in Chanchal.
             </motion.p>
 
             <motion.div
@@ -137,7 +137,7 @@ export default function Hero() {
               variants={textItemVariants}
               className="mt-7 text-xs sm:text-sm text-[#F6EBDD]/65 flex items-center gap-2"
             >
-              <span>Ashapur Road, Ramdebpur</span>
+              <span>Ashapur Road, Chanchal</span>
               <span aria-hidden="true">·</span>
               <span>Malda Division, West Bengal</span>
             </motion.p>

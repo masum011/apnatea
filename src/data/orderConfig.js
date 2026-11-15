@@ -5,7 +5,7 @@
 export const ORDER_CONFIG = {
   storeName: 'Apna Tea',
   franchiseName: 'Apna Amruttulya',
-  outletAddress: 'Ashapur Road, Ramdebpur, Malda Division, West Bengal',
+  outletAddress: 'Ashapur Road, Chanchal, Malda Division, West Bengal',
   currencySymbol: '₹',
 
   // Enter your 10-digit mobile number with country code (e.g., '919876543210')
@@ -13,6 +13,7 @@ export const ORDER_CONFIG = {
   ownerWhatsAppNumber: '918016634973',
 
   acceptingOrders: true,
+  minimumOrderAmount: 99,
 
   pickup: {
     enabled: true,
@@ -25,7 +26,7 @@ export const ORDER_CONFIG = {
     label: 'Local Delivery',
     fee: 20,
     freeDeliveryAbove: 199,
-    areaNote: 'Local delivery around Ashapur Road & Ramdebpur',
+    areaNote: 'Local delivery around Ashapur Road & Chanchal',
   },
 
   legal: {
