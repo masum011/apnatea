@@ -29,7 +29,7 @@ import { CheckoutProcessingSkeleton } from '../Skeletons';
 const INITIAL_CHECKOUT = {
   customerName: '',
   customerPhone: '',
-  orderType: ORDER_CONFIG.pickup.enabled ? 'pickup' : 'delivery',
+  orderType: ORDER_CONFIG.delivery.enabled ? 'delivery' : 'pickup',
   deliveryAddress: '',
   instructions: '',
   ageConfirmed: false,
@@ -48,6 +48,8 @@ export default function CartDrawer({
   const [errors, setErrors] = useState({});
   const [placedOrder, setPlacedOrder] = useState(null);
   const [copied, setCopied] = useState(false);
+  const [isLocating, setIsLocating] = useState(false);
+  const [locationMessage, setLocationMessage] = useState('');
 
   const totals = calculateOrderTotals(cartItems, form.orderType);
   const minimumOrderMet = totals.subtotal >= ORDER_CONFIG.minimumOrderAmount;
@@ -70,9 +72,42 @@ export default function CartDrawer({
   const handleFieldChange = (field) => (e) => {
     const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
     setForm((prev) => ({ ...prev, [field]: value }));
+    if (field === 'deliveryAddress') setLocationMessage('');
     if (errors[field]) {
       setErrors((prev) => ({ ...prev, [field]: '' }));
     }
+  };
+
+  const handleUseCurrentLocation = () => {
+    if (!navigator.geolocation) {
+      setLocationMessage('Location is unavailable in this browser. Please enter your address.');
+      return;
+    }
+
+    setIsLocating(true);
+    setLocationMessage('');
+    navigator.geolocation.getCurrentPosition(
+      ({ coords }) => {
+        const mapUrl = `https://www.google.com/maps/search/?api=1&query=${coords.latitude},${coords.longitude}`;
+        setForm((prev) => ({ ...prev, deliveryAddress: mapUrl }));
+        setErrors((prev) => ({ ...prev, deliveryAddress: '' }));
+        setLocationMessage('Location added. Add a house number or landmark if needed.');
+        setIsLocating(false);
+      },
+      (error) => {
+        const message =
+          error.code === error.PERMISSION_DENIED
+            ? 'Location permission was denied. Allow access in your browser settings, then try again.'
+            : error.code === error.POSITION_UNAVAILABLE
+              ? 'Your location could not be determined. Check that location services are enabled.'
+              : error.code === error.TIMEOUT
+                ? 'Location request timed out. Please try again.'
+                : 'Unable to fetch your location. Please enter your address.';
+        setLocationMessage(message);
+        setIsLocating(false);
+      },
+      { enableHighAccuracy: true, timeout: 15000, maximumAge: 0 }
+    );
   };
 
   const validateCheckout = () => {
@@ -429,28 +464,6 @@ export default function CartDrawer({
                       Order Preference
                     </label>
                     <div className="grid grid-cols-2 gap-2.5">
-                      {ORDER_CONFIG.pickup.enabled && (
-                        <button
-                          type="button"
-                          onClick={() => setForm((p) => ({ ...p, orderType: 'pickup' }))}
-                          className={`p-3 rounded-xl border text-left transition-colors cursor-pointer ${
-                            form.orderType === 'pickup'
-                              ? 'bg-[#321B13] text-[#FFFDF8] border-[#321B13]'
-                              : 'bg-[#FBF5EC] text-[#321B13] border-[#6B3D25]/20 hover:border-[#6B3D25]/45'
-                          }`}
-                        >
-                          <Store className="w-4 h-4 text-[#E59F29] mb-1" aria-hidden="true" />
-                          <p className="text-xs font-bold">{ORDER_CONFIG.pickup.label}</p>
-                          <p
-                            className={`text-[11px] mt-0.5 ${
-                              form.orderType === 'pickup' ? 'text-[#F6EBDD]/75' : 'text-[#6B3D25]/80'
-                            }`}
-                          >
-                            No delivery fee
-                          </p>
-                        </button>
-                      )}
-
                       {ORDER_CONFIG.delivery.enabled && (
                         <button
                           type="button"
@@ -471,6 +484,28 @@ export default function CartDrawer({
                             }`}
                           >
                             Free above {formatCurrency(ORDER_CONFIG.delivery.freeDeliveryAbove)}
+                          </p>
+                        </button>
+                      )}
+
+                      {ORDER_CONFIG.pickup.enabled && (
+                        <button
+                          type="button"
+                          onClick={() => setForm((p) => ({ ...p, orderType: 'pickup' }))}
+                          className={`p-3 rounded-xl border text-left transition-colors cursor-pointer ${
+                            form.orderType === 'pickup'
+                              ? 'bg-[#321B13] text-[#FFFDF8] border-[#321B13]'
+                              : 'bg-[#FBF5EC] text-[#321B13] border-[#6B3D25]/20 hover:border-[#6B3D25]/45'
+                          }`}
+                        >
+                          <Store className="w-4 h-4 text-[#E59F29] mb-1" aria-hidden="true" />
+                          <p className="text-xs font-bold">{ORDER_CONFIG.pickup.label}</p>
+                          <p
+                            className={`text-[11px] mt-0.5 ${
+                              form.orderType === 'pickup' ? 'text-[#F6EBDD]/75' : 'text-[#6B3D25]/80'
+                            }`}
+                          >
+                            No delivery fee
                           </p>
                         </button>
                       )}
@@ -539,6 +574,27 @@ export default function CartDrawer({
                           errors.deliveryAddress ? 'border-[#A83224]' : 'border-[#6B3D25]/20'
                         }`}
                       />
+                      <button
+                        type="button"
+                        onClick={handleUseCurrentLocation}
+                        disabled={isLocating}
+                        className="mt-2 inline-flex items-center gap-1.5 text-xs font-semibold text-[#6B3D25] hover:text-[#321B13] disabled:opacity-60 disabled:cursor-wait cursor-pointer"
+                      >
+                        <MapPin className="w-3.5 h-3.5" aria-hidden="true" />
+                        {isLocating ? 'Fetching location...' : 'Use my current location'}
+                      </button>
+                      {locationMessage && (
+                        <p
+                          className={`text-xs mt-1 ${
+                            locationMessage.startsWith('Location added')
+                              ? 'text-[#1F7A43]'
+                              : 'text-[#A83224]'
+                          }`}
+                          role="status"
+                        >
+                          {locationMessage}
+                        </p>
+                      )}
                       {errors.deliveryAddress && (
                         <p className="text-xs text-[#A83224] mt-1">{errors.deliveryAddress}</p>
                       )}
